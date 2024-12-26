@@ -1,0 +1,8 @@
+h1{
+    color:red;
+}
+
+img{
+    size: 5px;
+    image-rendering: pixelated;
+}
