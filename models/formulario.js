@@ -1,8 +1,11 @@
 const db=require("./db")
 
+
+
 //cria tabela no banco de dados
 //Declaração antes da mudança para o modulo 
 // const Usuario= sequelize.define ('usuarios',{
+
     const Usuario= db.sequelize.define ('usuarios',{
     nome:{
         type:db.Sequelize.STRING
@@ -19,4 +22,5 @@ const db=require("./db")
 })
 
 module.exports= Usuario
+
 //Usuario.sync({force:true})

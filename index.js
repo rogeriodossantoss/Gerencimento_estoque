@@ -1,7 +1,8 @@
 const express = require('express')
 const handlebars = require ('express-handlebars')
 const bodyParser=require('body-parser')
-const Usuario = require('./models/formulario')
+const Usuario = require('./models/formulario');
+const User = require('./models/formulario');
 
 
 const app=express();
@@ -21,9 +22,14 @@ app.set('views', './views');
 
 
 //rotas
-app.get('/', (req, res)=>{
-  Usuario.all()
-  //res.render('home',{formulario:"formulario"})
+app.get('/',(req, res)=>{
+//res.render('home',{formulario:"formulario"})
+
+  Usuario.findAll().then(function(Usuario) {
+  res.json(Usuario)
+})
+
+
 })
 
 app.get('/formulario', (req, res) => {
