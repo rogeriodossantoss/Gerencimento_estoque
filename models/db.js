@@ -2,8 +2,9 @@ const Sequelize = require('sequelize')
 
 //Conexão com banco de dados
 const sequelize = new Sequelize('sistema','root','manaus@123',{
-    host:"localhost",
-    dialect:'mysql'
+    host:"localhost",//ip do servidor
+    dialect:'mysql',//tipo de banco de dados
+    query:{raw:true}//
 })
 
 

@@ -3,15 +3,14 @@ const handlebars = require ('express-handlebars')
 const bodyParser=require('body-parser')
 const Usuario = require('./models/formulario');
 const User = require('./models/formulario');
+const { where } = require('sequelize');
 
 
 const app=express();
 
-
 //body-parser
-app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
-
+app.use(bodyParser.json())
 
 /*Nesse campo estou informando ao express que irei utilizar o handlebars 
 para template para nosso projeto*/  
@@ -22,12 +21,17 @@ app.set('views', './views');
 
 
 //rotas
-app.get('/',(req, res)=>{
-//res.render('home',{formulario:"formulario"})
+app.get('/',async(req, res)=>{
 
+  const usuarios = await Usuario.findAll()
+ // const usuarios = await Usuario.findAll({order: [['id', 'DESC']]});//lista do mais antigo para o mais novo
+  res.render('home',{usuarios:usuarios})
+
+/*
   Usuario.findAll().then(function(Usuario) {
-  res.json(Usuario)
-})
+  res.render('home',{ListaUsuario:ListaUsuario})
+}).catch(function(erro){
+    res.send("Houve um erro")*/
 
 
 })
@@ -35,6 +39,19 @@ app.get('/',(req, res)=>{
 app.get('/formulario', (req, res) => {
     res.render('formulario');
 });
+
+
+app.get('/deletar/:id', (req, res)=>{
+  Usuario.destroy({
+    where: {
+      'id':req.params.id,
+    }
+}).then(function(){
+  res.send("Registro deletado com sucesso!")
+}).catch(function(erro){
+  res.send("Houve um erro")
+})
+})
 
 //inserindo informações na tabela.
 app.post('/add',function (req, res){
@@ -49,7 +66,9 @@ app.post('/add',function (req, res){
     res.send("Houve um erro")
   })
   
-})
+})//fim da rota add
+
+
 
 
 app.listen(3000, function () {
