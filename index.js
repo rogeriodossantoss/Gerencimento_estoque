@@ -23,9 +23,10 @@ app.set('views', './views');
 //rotas
 app.get('/',async(req, res)=>{
 
-  const usuarios = await Usuario.findAll()
+ const usuarios = await Usuario.findAll()
  // const usuarios = await Usuario.findAll({order: [['id', 'DESC']]});//lista do mais antigo para o mais novo
-  res.render('home',{usuarios:usuarios})
+ //res.json({usuarios:usuarios})
+ res.render('home',{usuarios:usuarios})
 
 /*
   Usuario.findAll().then(function(Usuario) {
@@ -36,8 +37,14 @@ app.get('/',async(req, res)=>{
 
 })
 
+app.post('/',async(req, res)=>{
+  console.log(req.body.id)
+
+})
+
 app.get('/formulario', (req, res) => {
     res.render('formulario');
+    
 });
 
 
@@ -67,6 +74,25 @@ app.post('/add',function (req, res){
   })
   
 })//fim da rota add
+
+app.post('/update/:id',async(req,res)=>{
+//inicio
+await Usuario.update({
+   nome: req.body.nome },
+  {
+    where: {
+      id:req.params.id
+   }
+  }).then(function(){
+    res.send("sucesso")
+  }).catch(function(erro){
+    res.send("erro")
+  })
+
+
+//fim
+ } );
+
 
 
 

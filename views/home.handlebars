@@ -1,14 +1,22 @@
 <h1>Cadastro realizado com sucesso</h1>
 
 {{#each usuarios}}
-{{id}}
-{{nome}}
-{{sobrenome}}
-{{idade}}
-{{email}}
+
+
+<form action="/update/{{id}}" method="post">
+<label>ID:</label>
+<input type="text" name="id" value="{{id}}" readonly><br>
+<labe>Nome:</labe>
+<input type="text" name="nome" value="{{nome}} {{sobrenome}}">
+<label>Idade:</label>
+<input type="text" name="idade" value="{{idade}}"><br>
+<label>Email:</label>
+<input type="text" name="email" value="{{email}}">
+<br>
+ <button type="submit">Update</button>
+</form>
 <form action="/deletar/{{id}}" method="get">
  <button type="submit">Deletar</button>
 </form>
-
 <hr>
 {{/each}}

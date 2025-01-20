@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize')
+const Usuario = require('./models/formulario')
 const sequelize = new Sequelize('teste','root','manaus@123',{
     host:"localhost",
     dialect:'mysql'
@@ -14,6 +15,7 @@ Usuario.create({
     idade:35,
     email:"rogerio@gmail.com"
 })
+
 
 
 /*
