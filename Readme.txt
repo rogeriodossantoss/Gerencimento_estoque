@@ -1,5 +1,9 @@
-1º instalar 
+1º instalar express
+
+2º instalar 
 npm i sequelize --save
 
-2º instalar mysql
+3º instalar mysql
 npm i mysql2 --save
+
+4º 
