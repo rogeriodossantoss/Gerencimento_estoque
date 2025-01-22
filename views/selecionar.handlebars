@@ -1,0 +1,21 @@
+<h1>Lista de produtos</h1>
+
+<table class="table table-striped">
+    <thead>
+        <th>nome</th>
+        <th>sobrenome</th>
+        <th>idadade</th>
+        <th>email</th>
+    </thead>
+    <tbody>
+        {{#each usuarios}}
+        <tr>
+        <td>{{nome}}</td>
+        <td>{{sobrenome}}</td>
+        <td>{{idadade}}</td>
+        <td>{{email}}</td>
+        <td><a href="/selecionar/{{id}}">selecionar</a></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

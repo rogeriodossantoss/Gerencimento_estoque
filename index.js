@@ -37,6 +37,13 @@ app.get('/',async(req, res)=>{
 
 })
 
+app.get('/selecionar',async(req, res)=>{
+
+  const usuarios = await Usuario.findAll()
+  res.render('selecionar',{usuarios:usuarios})
+ 
+ })
+
 app.post('/',async(req, res)=>{
   console.log(req.body.id)
 
@@ -93,7 +100,10 @@ await Usuario.update({
 //fim
  } );
 
-
+ app.get('/selecionar/:id',async(req,res)=>{
+  res.render('selecionar');
+   } );
+  
 
 
 
