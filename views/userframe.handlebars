@@ -1,0 +1,14 @@
+
+<h2>HTML Forms</h2>
+
+{{#each usuarios}}
+<form action="/userframe/{{id}}" method="post"></form>
+  <label for="name">Primeiro:</label><br>
+  <input type="text" name="id" value="{{id}}"><br>
+  <label for="sobrenome">sobrenome:</label><br>
+  <input type="text"  name="nome" value="{{nome}}"><br><br>
+  <input type="submit" value="Submit">
+</form> 
+{{/each}}
+
+<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>

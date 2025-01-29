@@ -37,17 +37,19 @@ app.get('/',async(req, res)=>{
 
 })
 
-app.get('/selecionar',async(req, res)=>{
+app.get('/listauser',async(req, res)=>{
 
   const usuarios = await Usuario.findAll()
-  res.render('selecionar',{usuarios:usuarios})
+  res.render('listauser',{usuarios:usuarios})
  
  })
 
-app.post('/',async(req, res)=>{
-  console.log(req.body.id)
+ app.get('/userframe/:id',async(req, res)=>{
 
-})
+  const usuarios = await Usuario.findAll({where:{id:req.params.id}})
+  res.render('userframe',{usuarios:usuarios})
+ 
+ })
 
 app.get('/formulario', (req, res) => {
     res.render('formulario');
@@ -98,14 +100,7 @@ await Usuario.update({
 
 
 //fim
- } );
-
- app.get('/selecionar/:id',async(req,res)=>{
-  res.render('selecionar');
-   } );
-  
-
-
+ } )
 
 app.listen(3000, function () {
   console.log("App de Exemplo escutando na porta 3000!");
