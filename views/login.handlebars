@@ -1,0 +1,24 @@
+
+<form action="/login/{{id}}" method="post"></form>
+  
+    <legend>login</legend>
+    <!--div nome de Usuário-->
+
+    <div class="mb-3">
+      <label for="nomeUsuario" class="form-label">Usuário</label>
+      <select id="nomeUsuario" class="form-select" >
+        {{#each usuarios}}
+        <option value="{{id}}">{{nome}}</option> 
+        {{/each}}
+      </select>
+    </div>
+  <!--fim da div nome de Usuário-->
+
+   <!--div password-->
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="text" name="senha" id="password" class="form-control" placeholder="Insira sua senha">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>

@@ -21,9 +21,21 @@ app.set('views', './views');
 
 
 //rotas
+app.get('/login',async(req,res)=>{
+  //inicio
+  const usuarios = await Usuario.findAll()
+  res.render('login',{usuarios:usuarios})
+ 
+    })
+  
+  
+  //fim
+
+  
+//
 app.get('/',async(req, res)=>{
 
- const usuarios = await Usuario.findAll()
+ const usuarios = await Usuario.find()
  // const usuarios = await Usuario.findAll({order: [['id', 'DESC']]});//lista do mais antigo para o mais novo
  //res.json({usuarios:usuarios})
  res.render('home',{usuarios:usuarios})
