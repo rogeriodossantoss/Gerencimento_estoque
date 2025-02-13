@@ -21,33 +21,30 @@ app.set('views', './views');
 
 
 //rotas
+app.get('/login/:id',async(req,res)=>{
+  //inicio
+ 
+  const usuarios = await Usuario.findAll({where:{id:req.params.id}})
+  res.render('login',{usuarios:usuarios})
+})
+
 app.get('/login',async(req,res)=>{
   //inicio
   const usuarios = await Usuario.findAll()
   res.render('login',{usuarios:usuarios})
- 
-    })
+})
   
-  
-  //fim
+//fim
 
-  
-//
+//rotas
 app.get('/',async(req, res)=>{
 
- const usuarios = await Usuario.find()
- // const usuarios = await Usuario.findAll({order: [['id', 'DESC']]});//lista do mais antigo para o mais novo
- //res.json({usuarios:usuarios})
- res.render('home',{usuarios:usuarios})
-
-/*
-  Usuario.findAll().then(function(Usuario) {
-  res.render('home',{ListaUsuario:ListaUsuario})
-}).catch(function(erro){
-    res.send("Houve um erro")*/
-
-
-})
+  const usuarios = await Usuario.findAll()
+  // const usuarios = await Usuario.findAll({order: [['id', 'DESC']]});//lista do mais antigo para o mais novo
+  //res.json({usuarios:usuarios})
+  res.render('home',{usuarios:usuarios})
+ 
+ })
 
 app.get('/listauser',async(req, res)=>{
 
@@ -87,7 +84,8 @@ app.post('/add',function (req, res){
     nome:req.body.nome,
     sobrenome:req.body.sobrenome,
     idade:req.body.idade,
-    email:req.body.email 
+    email:req.body.email,
+    senha:req.body.password
   }).then(function(){
     res.redirect("/")
   }).catch(function(erro){

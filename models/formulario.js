@@ -18,6 +18,9 @@ const db=require("./db")
     },
     email:{
         type:db.Sequelize.STRING
+    },
+    senha:{
+        type:db.Sequelize.STRING
     }
 })
 
